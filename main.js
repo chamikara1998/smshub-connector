@@ -5,14 +5,14 @@ let port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
     if(req.query.authorization !== undefined){
-        sendMessage(req);
-        res.send({status: "Sent Successfully"})
+        sendMessage(req,res);
+
     }else{
         res.status(401).send("API Key Missing");
     }
 })
 
-function sendMessage(req){
+function sendMessage(req,res){
     var data = JSON.stringify({
         "message": req.query.SmsMessage,
         "phoneNumber": req.query.PhoneNumber
@@ -30,7 +30,7 @@ function sendMessage(req){
 
     axios(config)
         .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            res.send({status: "Sent Successfully",data: response});
         })
         .catch(function (error) {
             console.log(error);
