@@ -4,7 +4,7 @@ const app = express()
 let port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-    if(req.headers.authorization !== undefined){
+    if(req.query.authorization !== undefined){
         sendMessage(req);
         res.send({status: "Sent Successfully"})
     }else{
@@ -22,7 +22,7 @@ function sendMessage(req){
         method: 'post',
         url: 'https://api.smshub.lk/api/v1/send/single',
         headers: {
-            'Authorization': req.headers.authorization,
+            'Authorization': req.query.authorization,
             'Content-Type': 'application/json'
         },
         data : data
