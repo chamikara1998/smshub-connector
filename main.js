@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 function sendMessage(req,res){
     var data = JSON.stringify({
         "message": req.query.SmsMessage,
-        "phoneNumber": req.query.PhoneNumber.replace("+","")
+        "phoneNumber": req.query.PhoneNumber.replace("+94","0")
     });
 
     var config = {
