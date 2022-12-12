@@ -4,7 +4,7 @@ const app = express()
 let port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-    if(req.query.authorization !== undefined){
+    if(req.query.Authorization !== undefined){
         sendMessage(req,res);
 
     }else{
@@ -30,7 +30,7 @@ function sendMessage(req,res){
 
     axios(config)
         .then(function (response) {
-            res.send({status: "Sent Successfully",data: response});
+            res.send({status: "Sent Successfully",data: response.data});
         })
         .catch(function (error) {
             console.log(error);
