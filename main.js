@@ -22,7 +22,7 @@ function sendMessage(req){
         method: 'post',
         url: 'https://api.smshub.lk/api/v1/send/single',
         headers: {
-            'Authorization': req.query.authorization,
+            'Authorization': req.query.Authorization,
             'Content-Type': 'application/json'
         },
         data : data
